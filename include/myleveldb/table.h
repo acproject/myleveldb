@@ -40,6 +40,13 @@ namespace myleveldb {
 
         explicit Table(Rep* rep) : rep_(rep) {}
 
+        /**
+         * @param ReadOptions  参数是一个类型为ReadOptions的变量，用于指定读取操作的选项和配置。
+         * @param key Slice的引用，用于指定要读取的键(key)。
+         * @param arg 指向void类型的指针，用于传递给handle_result函数的回调参数。
+         * @param handle_result 指向函数的指针，该函数接受一个void类型的指针参数和两个Slice类型的引用参数，用于处理读取结果。
+         * @return
+         */
         Status InternalGet(const ReadOptions, const Slice& key, void* arg,
                            void (*handle_result)(void* arg, const Slice& k, const Slice& v));
 
